@@ -6,7 +6,7 @@ import Stats from './components/Stats'
 
 
 const initialItems = [
-  { id: 1, description: "Passports", quantity: 2, packed: true },
+  { id: 1, description: "Passports", quantity: 2, packed: false },
   { id: 2, description: "Socks", quantity: 12, packed: false },
 ];
 
@@ -18,23 +18,23 @@ function App() {
     setItems([
       ...items,
       item
-    ])
+    ]);
   
-  }
+  };
 
   const handleDeleteItem = (id) => {
     //filter out the id that matches the ojbect id
-    setItems(items.filter(item => item.id !== id))
-  }
+    setItems(items.filter(item => item.id !== id));
+  };
 
   const handleToggleItem = (id) => {
     setItems((items) => items.map((item)=> item.id === id ? {
       ...item,
       packed: !item.packed
-    } : {}))
+    } : item));
     //setCount((count) => count + 1)
     //setCount(count + 1)
-  }
+  };
 
   return (
     <div className='app'>
@@ -46,9 +46,9 @@ function App() {
       onDeleteItem={handleDeleteItem}
       onToggle={handleToggleItem}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
-  )
+  );
 }
 
 export default App

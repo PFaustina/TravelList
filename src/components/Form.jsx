@@ -2,13 +2,13 @@ import React from 'react'
 import { useState } from "react";
 
 
-function Form () {
+function Form ({onAddItems}) {
 
   const[description, setDiscription] = useState('')
-  const[quantity, setQuantity] = useState(7)
+  const[quantity, setQuantity] = useState(1)
 
   const handleSubmit =(e) => {
-    console.log(e)
+    //console.log(e)
     e.preventDefault();
 
     if(!description) return;
@@ -21,9 +21,9 @@ function Form () {
     }
   
     console.log(newItem)
-    handleAddItem(newItem)
+    onAddItem(newItem)
     
-    setDescription('')
+    setDescription("")
     setQuantity(1)
 
   }
